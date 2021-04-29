@@ -17,11 +17,10 @@ object ApplicationModule {
 
     @Singleton
     @Provides
-    fun provideNetworkApi(): NetworkApi {
-        return Retrofit.Builder()
-                .baseUrl("https://rickandmortyapi.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build().create(NetworkApi::class.java)
-    }
+    fun provideNetworkApi(): NetworkApi =
+            Retrofit.Builder()
+                    .baseUrl("https://rickandmortyapi.com/api/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                    .build().create(NetworkApi::class.java)
 }
