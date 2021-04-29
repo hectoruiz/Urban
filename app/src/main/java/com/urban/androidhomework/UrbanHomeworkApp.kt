@@ -1,11 +1,9 @@
-package com.urban.androidhomework;
+package com.urban.androidhomework
 
-import android.app.Application;
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-public class UrbanHomeworkApp extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        NetworkClient.get().setup(getApplicationContext());
-    }
+@HiltAndroidApp
+class UrbanHomeworkApp : Application() {
+
 }

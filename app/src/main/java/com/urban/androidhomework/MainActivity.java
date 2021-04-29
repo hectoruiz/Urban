@@ -7,23 +7,29 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import retrofit2.Response;
 
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private CharactersAdapter adapter;
     private ListView listview;
+
+    @Inject
+    NetworkApi networkApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NetworkClient.get()
-                .getService()
+        networkApi
                 .getAllCharacters()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
