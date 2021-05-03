@@ -6,10 +6,11 @@ class Utils {
     companion object {
         fun getName(characterResponse: Response<Character>): List<String> {
             val names = mutableListOf<String>()
-            for (ch in characterResponse.body()!!.results) {
-                names.add(ch.name)
+            characterResponse.body()?.let { characters ->
+                for (character in characters.results) {
+                    names.add(character.name)
+                }
             }
-
             return names
         }
     }
