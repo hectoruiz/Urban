@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Empty View -->
+    <dimen name="margin_empty_view">64dp</dimen>
+    <dimen name="image_empty_view">50dp</dimen>
+</resources>
